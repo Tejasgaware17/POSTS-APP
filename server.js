@@ -1,5 +1,6 @@
 require("dotenv").config();
 const connectDatabase = require("./config/db");
+const routeNotFound = require("./middlewares/routeHandler");
 const express = require("express");
 const app = express();
 
@@ -14,6 +15,7 @@ app.get("/", (req, res) => {
 });
 
 // error handling middlewares
+app.use(routeNotFound);
 
 const start = async () => {
   const PORT = process.env.PORT || 3000;
