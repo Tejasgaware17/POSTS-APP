@@ -10,6 +10,12 @@ connectDatabase();
 
 app.use(express.json());
 
+// routers
+const authRouter = require("./routes/routes.auth");
+const postsRouter = require("./routes/routes.posts");
+app.use("/api/v1/auth/", authRouter);
+app.use("/api/v1/posts/", postsRouter);
+
 // routes
 app.get("/", (req, res) => {
   res.send("on / route");
