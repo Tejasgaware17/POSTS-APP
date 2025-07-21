@@ -6,7 +6,6 @@ const express = require("express");
 const app = express();
 
 // database
-connectDatabase();
 
 app.use(express.json());
 
@@ -28,6 +27,7 @@ app.use(routeNotFound);
 const start = async () => {
   const PORT = process.env.PORT || 3000;
   try {
+    connectDatabase(process.env.MONGO_URI);
     app.listen(PORT, console.log(`Server listening on port ${PORT}...`));
   } catch (error) {
     console.log(error);
