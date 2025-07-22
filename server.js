@@ -1,10 +1,28 @@
 require("dotenv").config();
+
+// extra security packages
+const helmet = require("helmet");
+const cors = require("cors");
+const xss = require("xss-clean");
+const rateLimit = require("express-rate-limit");
+
 const connectDatabase = require("./config/db");
 const routeNotFound = require("./middlewares/routeHandler");
 const errorHandlerMiddleware = require("./middlewares/errorHandler");
 const authMiddleware = require("./middlewares/authentication");
 const express = require("express");
 const app = express();
+
+app.set("trust proxy", 1);
+app.use(
+  rateLimit({
+    windowMs: 15 * 60 * 1000, // setting to 15mins
+    max: 100, // setting 100 requests per windoMs
+  })
+);
+app.use(helmet);
+app.use(cors);
+app.use(xss);
 
 app.use(express.json());
 
