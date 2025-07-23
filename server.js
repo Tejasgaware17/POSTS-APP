@@ -29,9 +29,10 @@ app.use(express.json());
 // routers
 const authRouter = require("./routes/routes.auth");
 const postsRouter = require("./routes/routes.posts");
+const exploreRouter = require("./routes/routes.explore");
 app.use("/api/v1/auth/", authRouter);
 app.use("/api/v1/posts/", authMiddleware, postsRouter);
-
+app.use("/api/v1/explore/", exploreRouter);
 // routes
 app.get("/", (req, res) => {
   res.send("on / route");
