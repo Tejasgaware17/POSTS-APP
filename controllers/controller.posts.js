@@ -3,11 +3,12 @@ const { StatusCodes } = require("http-status-codes");
 const { BadRequestError, NotFoundError } = require("../errors");
 
 const getAllPost = async (req, res) => {
-  const posts = await Post.find({ createdBy: req.user.userId }).sort(
-    "-createdAt"
-  );
+  const posts = await Post.find(
+    { createdBy: req.user.userId },
+    "-createdBy -__v"
+  ).sort("-createdAt");
 
-  res.status(StatusCodes.OK).json({ posts, count: posts.length });
+  res.status(StatusCodes.OK).json({ total: posts.length, posts });
 };
 
 const getPost = async (req, res) => {
@@ -16,10 +17,13 @@ const getPost = async (req, res) => {
     params: { id: postId },
   } = req;
 
-  const post = await Post.findOne({
-    _id: postId,
-    createdBy: userId,
-  });
+  const post = await Post.findOne(
+    {
+      _id: postId,
+      createdBy: userId,
+    },
+    "-_id -__v"
+  );
 
   if (!post) {
     throw new NotFoundError(`No post with id ${postId}`);
