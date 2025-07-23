@@ -17,7 +17,9 @@ const authMiddleware = async (req, res, next) => {
 
     next();
   } catch (error) {
-    throw new UnauthorisedError("Authentication failed!");
+    throw new UnauthorisedError(
+      "Authentication failed! Try logging in or registering for a new account"
+    );
   }
 };
 
