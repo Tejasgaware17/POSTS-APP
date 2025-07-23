@@ -10,10 +10,6 @@ const register = async (req, res) => {
 
 const login = async (req, res) => {
   const { email, password } = req.body;
-  // validating user data
-  if (!email || !password) {
-    throw new BadRequestError("Please provide all fields");
-  }
 
   const user = await User.findOne({ email });
   if (!user) {
