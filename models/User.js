@@ -2,33 +2,41 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-const UserSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: [true, "Please provide name"],
-    minlength: 3,
-    maxlength: 15,
-  },
-  email: {
-    type: String,
-    trim: true,
-    lowercase: true,
-    unique: true,
-    validate: {
-      validator: function (v) {
-        return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v);
-      },
-      message: "Please enter a valid email",
+const UserSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: [true, "Please provide name"],
+      minlength: 3,
+      maxlength: 40,
+      trim: true,
+      lowercase: true,
+      match: [/^[a-zA-Z ]+$/, "Name can only contain alphabets and spaces"],
     },
-    required: [true, "Please provide email"],
+    email: {
+      type: String,
+      trim: true,
+      lowercase: true,
+      unique: true,
+      index: true,
+      validate: {
+        validator: function (v) {
+          return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,})$/.test(v);
+        },
+        message: "Please enter a valid email",
+      },
+      required: [true, "Please provide email"],
+    },
+    password: {
+      type: String,
+      required: [true, "Please provide password"],
+      trim: true,
+      minlength: 6,
+      select: false,
+    },
   },
-  password: {
-    type: String,
-    required: [true, "Please provide password"],
-    trim: true,
-    minlength: 6,
-  },
-});
+  { timestamps: true }
+);
 
 UserSchema.pre("save", async function (next) {
   const salt = await bcrypt.genSalt(10);
