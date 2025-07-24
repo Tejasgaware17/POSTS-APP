@@ -34,12 +34,6 @@ const getPost = async (req, res) => {
 };
 
 const createPost = async (req, res) => {
-  const { title, category } = req.body;
-
-  if (!title?.trim() || !category?.trim()) {
-    throw new BadRequestError("Title and category are required");
-  }
-
   req.body.createdBy = req.user.userId;
   const post = await Post.create(req.body);
 
@@ -47,15 +41,8 @@ const createPost = async (req, res) => {
 };
 
 const updatePost = async (req, res) => {
-  const { title, category } = req.body;
   const { userId } = req.user;
   const { id: postId } = req.params;
-
-  if (!title?.trim() || !category?.trim()) {
-    throw new BadRequestError(
-      "Title and category are required and must not be empty"
-    );
-  }
 
   const post = await Post.findOneAndUpdate(
     { _id: postId, createdBy: userId },

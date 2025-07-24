@@ -4,13 +4,13 @@ const PostSchema = new mongoose.Schema(
   {
     title: {
       type: String,
-      required: [true, "Please provide post title"],
+      required: [true, "Please provide title of post"],
       maxlength: 60,
     },
     createdBy: {
       type: mongoose.Types.ObjectId,
       ref: "User",
-      required: [true, "Please provide the User"],
+      required: [true, "Please provide the User of the post"],
     },
     caption: {
       type: String,
@@ -60,6 +60,7 @@ const PostSchema = new mongoose.Schema(
         "happening",
       ],
       default: "social",
+      required: [true, "Post category must not be empty"],
     },
   },
   { timestamps: true }

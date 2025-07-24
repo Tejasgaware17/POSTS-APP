@@ -6,10 +6,6 @@ const { NotFoundError } = require("../errors");
 const exploreGetSinglePost = async (req, res) => {
   const postId = req.params.id;
 
-  if (!mongoose.Types.ObjectId.isValid(postId)) {
-    throw new BadRequestError("Invalid post ID");
-  }
-
   const post = await Post.findOne({ _id: postId })
     .select("-_id -updatedAt -__v")
     .populate("createdBy", "name -_id")
