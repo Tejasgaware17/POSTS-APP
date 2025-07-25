@@ -101,7 +101,35 @@ const exploreGetAllPost = async (req, res) => {
 };
 
 const likePost = async (req, res) => {
-  res.send("like post");
+  const { id: postId } = req.params;
+  const userId = req.user.userId;
+
+  const post = await Post.findById(postId);
+  if (!post) throw new NotFoundError(`Invalid post id ${postId}`);
+
+  const queryObject = { userId, postId };
+  let liked;
+
+  const likeExists = await Like.findOne(queryObject);
+
+  // ḷike and unlike
+  if (likeExists) {
+    await Like.deleteOne(queryObject);
+    await Post.updateOne({ _id: postId }, { $inc: { likes: -1 } });
+    liked = false;
+  } else {
+    await Like.create(queryObject);
+    await Post.updateOne({ _id: postId }, { $inc: { likes: 1 } });
+    liked = true;
+  }
+
+  const updatedPost = await Post.findById(postId).select("likes");
+
+  res.status(StatusCodes.OK).json({
+    message: liked ? "Post liked" : "Removed like from the post",
+    liked,
+    totalLikes: updatedPost.likes,
+  });
 };
 
 module.exports = { exploreGetAllPost, exploreGetSinglePost, likePost };
