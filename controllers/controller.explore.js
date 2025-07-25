@@ -1,5 +1,6 @@
 const Post = require("../models/Post");
 const User = require("../models/User");
+const Like = require("../models/Like");
 const { StatusCodes } = require("http-status-codes");
 const { NotFoundError } = require("../errors");
 
@@ -99,4 +100,8 @@ const exploreGetAllPost = async (req, res) => {
   });
 };
 
-module.exports = { exploreGetAllPost, exploreGetSinglePost };
+const likePost = async (req, res) => {
+  res.send("like post");
+};
+
+module.exports = { exploreGetAllPost, exploreGetSinglePost, likePost };
