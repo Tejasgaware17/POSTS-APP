@@ -34,9 +34,17 @@ const getPost = async (req, res) => {
 };
 
 const createPost = async (req, res) => {
-  req.body.createdBy = req.user.userId;
-  const post = await Post.create(req.body);
+  const { title, caption, hashtags, category } = req.body;
+  let postDetails = {
+    title,
+    createdBy: req.user.userId,
+    caption,
+    hashtags,
+    category,
+    likes: 0,
+  };
 
+  const post = await Post.create(postDetails);
   res.status(StatusCodes.CREATED).json({ post });
 };
 
