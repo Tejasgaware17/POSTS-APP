@@ -33,7 +33,18 @@ app.use("/api/v1/posts/", authMiddleware, postsRouter);
 app.use("/api/v1/explore/", authMiddleware, exploreRouter);
 // routes
 app.get("/", (req, res) => {
-  res.send("on / route");
+  res.send(`
+      <div style="margin: 2rem 4rem;">
+      <pre style="font-size: 1.5rem">Welcome to <b>Posts API</b> 📱</pre>
+      <p style="font-family:Arial;">
+        Register🔐 now to use this api
+        <br>
+        Login🔑 if you already have an account
+        <br>
+        Share your experience with us 🙇💕.
+      </p>
+      </div>
+    `);
 });
 
 // error handling middlewares
