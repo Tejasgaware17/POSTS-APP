@@ -37,11 +37,11 @@ app.get("/", (req, res) => {
       <div style="margin: 2rem 4rem;">
       <pre style="font-size: 1.5rem">Welcome to <b>Posts API</b> 📱</pre>
       <p style="font-family:Arial;">
-        Register🔐 now to use this api
+        🧪Check documentation to the get details
         <br>
-        Login🔑 if you already have an account
-        <br>
-        Share your experience with us 🙇💕.
+        🔐Register as a user and start using now
+        <br><br>
+        Share your experience with us 🙇💕
       </p>
       </div>
     `);
