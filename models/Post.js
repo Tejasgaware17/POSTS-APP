@@ -60,7 +60,6 @@ const PostSchema = new mongoose.Schema(
         "happening",
       ],
       default: "social",
-      required: [true, "Post category must not be empty"],
     },
   },
   { timestamps: true }
