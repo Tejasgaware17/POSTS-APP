@@ -37,7 +37,7 @@ app.get("/", (req, res) => {
       <div style="margin: 2rem 4rem;">
       <pre style="font-size: 1.5rem">Welcome to <b>Posts API</b> 📱</pre>
       <p style="font-family:Arial;">
-        🧪Check documentation to the get details
+        🧪Check documentation to get the details
         <br>
         🔐Register as a user and start using now
         <br><br>
