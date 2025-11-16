@@ -103,13 +103,13 @@ npm run dev
 
 ## Try It Out
 Project was deployed on Render link: [bubleposts-api.onrender.com](bubbleposts-api.onrender.com)<br>
-Deployment is temporary and may go offline. Check the GitHub repo or LinkedIn post for live URL when available.
+Deployment is temporary and may go offline. Check the GitHub repo or stay connected with me via LinkedIn for future updates related to the live URL of the project when available.
 
 ---
 
 ## Contributing
 
-This project is currently a solo learning project, but contributions are welcome for future extensions. Feel free to fork and submit a PR.
+This project is currently a solo learning project, but contributions are welcome for future extensions.
 
 ---
 
