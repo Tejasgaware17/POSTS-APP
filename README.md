@@ -1,79 +1,96 @@
 # POSTS-APP
 
-A **backend API** that powers post creation, likes, comments, authentication, and more — built with **Node.js, Express, and MongoDB**.
+A backend REST API for creating and managing posts with authentication, likes, and comments — built using **Node.js, Express, and MongoDB**.
+
+This project is a learning-focused backend application designed with clean structure and scalability in mind.
 
 ---
 
-## Features
+## 🚀 Features
 
-- **User Authentication** using JWT (Register & Login)
-- **Protected Routes** with token-based access
-- **Create / Read / Update / Delete (CRUD)** posts
-- **Like & Unlike** functionality
-- **Commenting system**
-- **Filters & Search** for exploring posts
-- **Validation** using middleware
-- **Clean folder structure** for easy scaling
-- Easily extendable (more features coming soon)
+- User authentication using **JWT** (Register & Login)
+- Secure, protected routes
+- Full **CRUD** operations for posts
+- Like / Unlike posts
+- Commenting system
+- Input validation via middleware
+- Rate limiting and security headers
+- Clean and modular folder structure
 
 ---
 
-## Tech Stack
+## 🛠 Tech Stack
 
 - **Backend**: Node.js, Express.js
-- **Database**: MongoDB with Mongoose
-- **Authentication**: JSON Web Tokens (JWT), Bcrypt
-- **Hosting**: Render
+- **Database**: MongoDB, Mongoose
+- **Authentication**: JSON Web Tokens (JWT), bcrypt
+- **Security**: Helmet, Express Rate Limit
 - **Testing**: Postman
+- **Hosting**: Render (temporary)
 
 ---
 
-## Project Structure
+## 📁 Project Structure
 
 ```bash
-├── config/
-├── controllers/
-├── errors/
-├── models/
-├── routes/
-├── middlewares/
-├── .env
-└── server.js
+POSTS-APP/
+    ├── config/
+    ├── controllers/
+    ├── errors/
+    ├── middlewares/
+    ├── models/
+    ├── routes/
+    ├── .env.example
+    ├── .gitignore
+    ├── package.json
+    ├── package-lock.json
+    ├── server.js          # server
+    └── README.md
 ```
 
 ## 🔧 Getting Started (Local Setup)
 
+### 1. Clone the repository
+
 ```bash
-# 1. Clone the repository
-git clone https://github.com/<your-username>/bubbleposts-api.git
+git clone https://github.com/Tejasgaware17/POSTS-APP.git
+cd POSTS-APP
+```
 
-# 2. Install dependencies
-cd bubbleposts-api
+### 2. Install dependencies
+
+```bash
 npm install
+```
 
-# 3. Add your environment variables
-touch .env
+### 3. Environment variables
 
-### Sample .env:
-MONGODB_URI=your_mongo_db_connection_string
-JWT_SECRET=your_secret_key
+Create a `.env` file using the provided example:
 
-# 4. Run the server in development mode
+```bash
+cp .env.example .env
+```
+
+Fill in the required values in `.env`.
+
+### 4. Run the server
+
+```bash
 npm run dev
 ```
 
 ---
 
-## API Endpoints
-**Authentication**
+## 📌 API Endpoints
+
+### Authentication
 
 | Method | Endpoint         | Description           |
 | ------ | ---------------- | --------------------- |
 | POST   | `api/v1/auth/register` | Register a new user   |
 | POST   | `api/v1/auth/login`    | Login and receive JWT |
 
-
-**Posts**
+### Posts
 
 | Method | Endpoint     | Description                  |
 | ------ | ------------ | ---------------------------- |
@@ -83,16 +100,14 @@ npm run dev
 | PUT    | `api/v1/posts/:id` | Update a post (auth + owner) |
 | DELETE | `api/v1/posts/:id` | Delete a post (auth + owner) |
 
-
-**Explore**
+### Explore
 
 | Method | Endpoint       | Description                    |
 | ------ | ------------   | ------------------------------ |
 | GET    | `/api/v1/explore` | View all posts              |
 | GET    | `/api/v1/explore/:id` | Get a single post by ID |
 
-
-**Likes**
+### Likes
 
 | Method | Endpoint    | Description           |
 | ------ | ----------- | --------------------- |
@@ -100,21 +115,29 @@ npm run dev
 
 ---
 
+## 🌐 Live Demo
 
-## Try It Out
-Project was deployed on Render link: [bubleposts-api.onrender.com](bubbleposts-api.onrender.com)<br>
-Deployment is temporary and may go offline. Check the GitHub repo or stay connected with me via LinkedIn for future updates related to the live URL of the project when available.
+Project was deployed on Render link: [bubleposts-api.onrender.com](bubbleposts-api.onrender.com) <br>
+Deployment is temporary and may go offline.
 
----
+>If the live URL is unavailable, please run the project locally using the steps above.
 
-## Contributing
-
-This project is currently a solo learning project, but contributions are welcome for future extensions.
+Check the GitHub repo or stay connected with me via **LinkedIn** for future updates related to the live URL of the project when available.
 
 ---
 
-## About the Author
+## 📄 License
 
-Made by ~ *Tejas Gaware*
+This project is **unlicensed**. <br>
+The code is not intended for reuse or redistribution.
 
-Sharing this project as part of my backend development journey using the MERN stack. Feedback, collaborations, and suggestions are welcome!
+---
+
+## 👤 Author
+
+### Tejas Gaware
+
+This project is part of my Software developer journey.
+Feedback and suggestions are always welcome.
+
+---
