@@ -3,17 +3,18 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "type": "commonjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "lint": "echo \"Lint not configured yet\""
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Tejasgaware17/POSTS-APP.git"
   },
   "author": "Tejas",
-  "license": "ISC",
+  "license": "UNLICENSED",
   "bugs": {
     "url": "https://github.com/Tejasgaware17/POSTS-APP/issues"
   },
@@ -32,5 +33,10 @@
   },
   "devDependencies": {
     "nodemon": "^3.1.11"
-  }
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "private": true
 }
