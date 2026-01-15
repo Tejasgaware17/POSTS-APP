@@ -5,7 +5,7 @@ const helmet = require("helmet");
 const cors = require("cors");
 const rateLimit = require("express-rate-limit");
 
-const connectDatabase = require("./config/db");
+const config = require("./config");
 const routeNotFound = require("./middlewares/routeHandler");
 const errorHandlerMiddleware = require("./middlewares/errorHandler");
 const authMiddleware = require("./middlewares/authentication");
@@ -14,10 +14,10 @@ const app = express();
 
 app.set("trust proxy", 1);
 app.use(
-  rateLimit({
-    windowMs: 15 * 60 * 1000, // setting to 15mins
-    max: 100, // setting 100 requests per windoMs
-  })
+	rateLimit({
+		windowMs: 15 * 60 * 1000, // setting to 15mins
+		max: 100, // setting 100 requests per windoMs
+	})
 );
 app.use(helmet());
 app.use(cors());
@@ -33,7 +33,7 @@ app.use("/api/v1/posts/", authMiddleware, postsRouter);
 app.use("/api/v1/explore/", authMiddleware, exploreRouter);
 // routes
 app.get("/", (req, res) => {
-  res.send(`
+	res.send(`
       <div style="margin: 2rem 4rem;">
       <pre style="font-size: 1.5rem">Welcome to <b>Posts API</b> 📱</pre>
       <p style="font-family:Arial;">
@@ -52,13 +52,15 @@ app.use(errorHandlerMiddleware);
 app.use(routeNotFound);
 
 const start = async () => {
-  const PORT = process.env.PORT || 3000;
-  try {
-    connectDatabase(process.env.MONGO_URI);
-    app.listen(PORT, console.log(`Server listening on port ${PORT}...`));
-  } catch (error) {
-    console.log(error);
-  }
+	try {
+		config.connectMongoDb();
+		app.listen(
+			config.port,
+			console.log(`Server listening on port ${config.port}...`)
+		);
+	} catch (error) {
+		console.log(error);
+	}
 };
 
 start();
