@@ -1,6 +1,6 @@
-const Post = require("../models/Post");
 const { StatusCodes } = require("http-status-codes");
 const { BadRequestError, NotFoundError } = require("../errors");
+const { Post } = require("../models");
 
 const getAllPostController = async (req, res) => {
 	const posts = await Post.find({ createdBy: req.user.userId })

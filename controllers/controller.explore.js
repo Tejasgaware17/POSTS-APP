@@ -1,8 +1,6 @@
-const Post = require("../models/Post");
-const User = require("../models/User");
-const Like = require("../models/PostLike");
 const { StatusCodes } = require("http-status-codes");
 const { NotFoundError } = require("../errors");
+const { User, Post, Like } = require("../models");
 
 const exploreGetSinglePostController = async (req, res) => {
 	const postId = req.params.id;
