@@ -8,7 +8,14 @@ const rateLimit = require("express-rate-limit");
 const config = require("./config");
 
 // Middlewares
-const { authMiddleware, routeNotFound, errorHandlerMiddleware } = require('./middlewares')
+const {
+	authMiddleware,
+	routeNotFound,
+	errorHandlerMiddleware,
+} = require("./middlewares");
+
+// Routers
+const { authRoutes, exploreRoutes, postsRoutes } = require("./routes");
 
 const express = require("express");
 const app = express();
@@ -25,13 +32,10 @@ app.use(cors());
 
 app.use(express.json());
 
-// routers
-const authRouter = require("./routes/routes.auth");
-const postsRouter = require("./routes/routes.posts");
-const exploreRouter = require("./routes/routes.explore");
-app.use("/api/v1/auth/", authRouter);
-app.use("/api/v1/posts/", authMiddleware, postsRouter);
-app.use("/api/v1/explore/", authMiddleware, exploreRouter);
+
+app.use("/api/v1/auth/", authRoutes);
+app.use("/api/v1/posts/", authMiddleware, postsRoutes);
+app.use("/api/v1/explore/", authMiddleware, exploreRoutes);
 // routes
 app.get("/", (req, res) => {
 	res.send(`
