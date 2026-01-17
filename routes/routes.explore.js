@@ -1,14 +1,16 @@
 const express = require("express");
+const {
+	exploreGetAllPostController,
+	exploreGetSinglePostController,
+	likePostController,
+} = require("../controllers");
+
 const router = express.Router();
 
-const {
-  exploreGetAllPost,
-  exploreGetSinglePost,
-  likePost,
-} = require("../controllers/controller.explore");
+router.get("/", exploreGetAllPostController);
 
-router.route("/").get(exploreGetAllPost);
-router.route("/:id").get(exploreGetSinglePost);
-router.patch("/:id/like", likePost);
+router.post("/:id/like", likePostController);
+
+router.get("/:id", exploreGetSinglePostController);
 
 module.exports = router;

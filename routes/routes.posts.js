@@ -1,15 +1,23 @@
 const express = require("express");
-const router = express.Router();
 
 const {
-  getAllPost,
-  getPost,
-  createPost,
-  updatePost,
-  deletePost,
-} = require("../controllers/controller.posts");
+	createPostController,
+	getAllPostController,
+	getPostController,
+	updatePostController,
+	deletePostController,
+} = require("../controllers");
 
-router.route("/").post(createPost).get(getAllPost);
-router.route("/:id").get(getPost).patch(updatePost).delete(deletePost);
+const router = express.Router();
+
+// Collection routes
+router.route("/").get(getAllPostController).post(createPostController);
+
+// Single resource routes
+router
+	.route("/:id")
+	.get(getPostController)
+	.patch(updatePostController)
+	.delete(deletePostController);
 
 module.exports = router;
