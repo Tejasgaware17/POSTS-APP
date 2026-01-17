@@ -6,9 +6,10 @@ const cors = require("cors");
 const rateLimit = require("express-rate-limit");
 
 const config = require("./config");
-const routeNotFound = require("./middlewares/routeHandler");
-const errorHandlerMiddleware = require("./middlewares/errorHandler");
-const authMiddleware = require("./middlewares/authentication");
+
+// Middlewares
+const { authMiddleware, routeNotFound, errorHandlerMiddleware } = require('./middlewares')
+
 const express = require("express");
 const app = express();
 
