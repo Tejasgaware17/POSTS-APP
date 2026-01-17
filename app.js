@@ -31,6 +31,16 @@ app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/posts", authMiddleware, postsRoutes);
 app.use("/api/v1/explore", authMiddleware, exploreRoutes);
 
+// Api health check
+app.get("/health", (req, res) => {
+	res.status(200).json({
+		status: "ok",
+		service: "posts-api",
+		version: "v1",
+		uptime: process.uptime(),
+	});
+});
+
 // Error handling
 app.use(routeNotFound);
 app.use(errorHandlerMiddleware);
