@@ -34,17 +34,20 @@ This project is a learning-focused backend application designed with clean struc
 
 ```bash
 POSTS-APP/
-    ├── config/
-    ├── controllers/
-    ├── errors/
-    ├── middlewares/
-    ├── models/
-    ├── routes/
+    └── src/
+        ├── config/
+        ├── controllers/
+        ├── errors/
+        ├── middlewares/
+        ├── models/
+        ├── routes/
+        ├── validators/
+        ├── app.js
+        └── server.js
     ├── .env.example
     ├── .gitignore
-    ├── package.json
     ├── package-lock.json
-    ├── server.js          # server
+    ├── package.json
     └── README.md
 ```
 
@@ -79,21 +82,27 @@ Fill in the required values in `.env`.
 npm run dev
 ```
 
+Or
+
+```bash
+node src/server.js
+```
+
 ---
 
 ## 📌 API Endpoints
 
 ### Authentication
 
-| Method | Endpoint         | Description           |
-| ------ | ---------------- | --------------------- |
+| Method | Endpoint               | Description           |
+| ------ | ---------------------- | --------------------- |
 | POST   | `api/v1/auth/register` | Register a new user   |
 | POST   | `api/v1/auth/login`    | Login and receive JWT |
 
 ### Posts
 
-| Method | Endpoint     | Description                  |
-| ------ | ------------ | ---------------------------- |
+| Method | Endpoint           | Description                  |
+| ------ | ------------------ | ---------------------------- |
 | GET    | `api/v1/posts`     | Get all posts                |
 | GET    | `api/v1/posts/:id` | Get a single post by ID      |
 | POST   | `api/v1/posts`     | Create a new post (auth)     |
@@ -102,15 +111,15 @@ npm run dev
 
 ### Explore
 
-| Method | Endpoint       | Description                    |
-| ------ | ------------   | ------------------------------ |
-| GET    | `/api/v1/explore` | View all posts              |
+| Method | Endpoint              | Description             |
+| ------ | --------------------- | ----------------------- |
+| GET    | `/api/v1/explore`     | View all posts          |
 | GET    | `/api/v1/explore/:id` | Get a single post by ID |
 
 ### Likes
 
-| Method | Endpoint    | Description           |
-| ------ | ----------- | --------------------- |
+| Method | Endpoint                  | Description           |
+| ------ | ------------------------- | --------------------- |
 | POST   | `api/v1/explore/:id/like` | Toggle like on a post |
 
 ---
@@ -120,7 +129,7 @@ npm run dev
 Project was deployed on Render link: [bubleposts-api.onrender.com](bubbleposts-api.onrender.com) <br>
 Deployment is temporary and may go offline.
 
->If the live URL is unavailable, please run the project locally using the steps above.
+> If the live URL is unavailable, please run the project locally using the steps above.
 
 Check the GitHub repo or stay connected with me via **LinkedIn** for future updates related to the live URL of the project when available.
 
